@@ -23,14 +23,19 @@ export default function Nav() {
 	];
 
 	useEffect(() => {
-		if (firstRender === false) {
-			const addLetter = setInterval(() => {
-				setLetterAmount((prevVal) => prevVal + 1);
-			}, animSpeed);
+		if (!firstRender) {
+			let currentLetters = 0;
 
-			setTimeout(() => {
-				clearInterval(addLetter);
-			}, animSpeed * logoText.length);
+			const addLetter = () => {
+				setLetterAmount((prevVal) => prevVal + 1);
+				currentLetters++;
+
+				if (currentLetters < logoText.length) {
+					setTimeout(addLetter, animSpeed);
+				}
+			};
+
+			addLetter();
 		}
 
 		setFirstRender(false);
@@ -41,6 +46,7 @@ export default function Nav() {
 			<NavLink
 				key={index}
 				to={link.to}
+				end
 				className={({ isActive }) =>
 					isActive
 						? "text-purple-600 hover:text-purple-800 duration-300"

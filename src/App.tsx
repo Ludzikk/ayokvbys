@@ -70,7 +70,7 @@ export default function App() {
 			}}>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Layout />}>
+					<Route path="/ayokvbys" element={<Layout />}>
 						<Route index element={<HomePage />} />
 						<Route path="beats" element={<BeatsPage title={"beats"} />} />
 						<Route

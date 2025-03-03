@@ -16,6 +16,7 @@ type MyProps = {
 	playing: boolean;
 	changePlaying: (id: number) => void;
 	showPlayer: boolean;
+	buyLink: string
 };
 
 interface AnalyzerData {
@@ -47,6 +48,7 @@ export default function BeatsItem({
 	playing,
 	changePlaying,
 	showPlayer,
+	buyLink
 }: MyProps) {
 	const [analyzerData, setAnalyzerData] = useState<AnalyzerData | null>(null);
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -202,7 +204,7 @@ export default function BeatsItem({
 								free
 							</DownloadButton>
 						) : (
-							<BuyButton>Buy it</BuyButton>
+							<BuyButton href={buyLink}>Buy it</BuyButton>
 						)}
 					</div>
 				</div>
@@ -236,6 +238,8 @@ export default function BeatsItem({
 						img={img}
 						title={title}
 						playing={playing}
+						isFree={isFree}
+						buyLink={buyLink}
 					/>
 				) : null}
 			</li>

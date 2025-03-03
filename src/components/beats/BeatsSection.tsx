@@ -19,6 +19,7 @@ type Beat = {
 	playing: boolean;
 	id: number;
 	showPlayer: boolean;
+	buyLink: string
 };
 
 export default function BeatsSection({ isFree = false }: BeatsSectionProps) {
@@ -45,9 +46,11 @@ export default function BeatsSection({ isFree = false }: BeatsSectionProps) {
 				playing={beat.playing}
 				changePlaying={changePlaying}
 				showPlayer={beat.showPlayer}
+				buyLink={beat.buyLink}
 			/>
 		);
 	});
+
 
 	function changePlaying(id: number) {
 		const beatsDataAfterUpdate = beatsData.map((beat) => {

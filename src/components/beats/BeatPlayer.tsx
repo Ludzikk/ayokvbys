@@ -8,6 +8,8 @@ type BeatPlayerProps = {
 	img: string;
 	title: string;
 	playing: boolean;
+	isFree: boolean
+	buyLink: string
 };
 
 interface CustomHTMLAudioElement extends HTMLAudioElement {
@@ -23,6 +25,8 @@ export default function BeatPlayer({
 	img,
 	title,
 	playing,
+	isFree,
+	buyLink
 }: BeatPlayerProps) {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [_, setChangedTime] = useState<number>(0);
@@ -123,7 +127,7 @@ export default function BeatPlayer({
 							/>
 							<span className="max-w-[250px] truncate">{title}</span>
 						</div>
-						<BuyButton>Buy it</BuyButton>
+						{isFree ? null : <BuyButton href={buyLink}>Buy it</BuyButton>}
 					</div>
 				</div>
 			) : null}
